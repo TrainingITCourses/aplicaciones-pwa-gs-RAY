@@ -2,13 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>DeteccionDelCambioGsRAY</title>
+  <title>PWA Ray</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
+  <meta name="theme-color" content="#48c729">
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+    <div class="circulo">
+      <div class="texto">Cargando programa de lanzamientos</div>
+      <div class="anillo"></div>
+    </div>
+  </app-root>
+  <style>
+    .circulo {
+      z-index: -50;
+      position: absolute;
+      background: linear-gradient(to bottom, #b4b2b2 0%, #b4b2b2 70%, #f5f5f5 100%);
+      overflow: hidden;
+      border-radius: 100%;
+      width: 300px;
+      height: 300px;
+      left: calc(50% - 150px);
+      top: calc(50% - 150px);
+      border: #025f1b 10px solid;
+    }
+
+    .texto {
+      width: 180px;
+      position: absolute;
+      top: 25px;
+      left: 60px;
+      text-align: center;
+      /* font-family: 'Alegreya', serif; */
+      font-size: 20px;
+    }
+    .anillo {
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      top: 120px;
+      left: 120px;
+    }
+    .anillo:after {
+      content: " ";
+      display: block;
+      width: 46px;
+      height: 46px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 5px solid #025f1b;
+      border-color: #025f1b transparent #025f1b transparent;
+      animation: anillo 1.2s linear infinite;
+    }
+    @keyframes anillo {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 </html>

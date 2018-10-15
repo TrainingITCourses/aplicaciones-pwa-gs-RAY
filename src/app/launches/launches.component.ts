@@ -15,7 +15,7 @@ export class LaunchesComponent implements OnInit {
 
   constructor(private storeLaunches: Store<LaunchesState>) { }
 
-  private launches$: Observable<Launch[]>;
+  public launches$: Observable<Launch[]>;
 
   ngOnInit() {
     this.launches$ = this.storeLaunches.select('launch')

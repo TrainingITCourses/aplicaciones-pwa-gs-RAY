@@ -5,6 +5,7 @@ import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import * as fromLaunch from './launch/launch.reducer';
 import * as fromCriteria from './criteria/criteria.reducer';
+import * as fromVersion from './version/version.reducer';
 
 export interface State {
   launch: fromLaunch.LaunchesState;
@@ -12,6 +13,8 @@ export interface State {
   typeMission: fromTypeMission.TypeMissionState;
   typeStatus: fromTypeStatus.TypeStatusState;
   criteria: fromCriteria.CriteriaState;
+  version: fromVersion.VersionState;
+
 }
 
 export const reducers: ActionReducerMap<State> = {
@@ -20,6 +23,7 @@ export const reducers: ActionReducerMap<State> = {
   typeMission: fromTypeMission.reducer,
   typeStatus: fromTypeStatus.reducer,
   criteria: fromCriteria.reducer,
+  version: fromVersion.reducer,
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

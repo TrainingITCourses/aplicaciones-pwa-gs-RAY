@@ -11,23 +11,17 @@ export class ApiService {
   // https://programandoointentandolo.com/2017/07/estructuras-condicionales-java.html
   // Operador terniario
   public getLaunches$ = () : Observable<any> => {
-    const launches = localStorage.getItem('launches');
-    if (launches) {
-      return of(JSON.parse(launches));
-    } else {
-      return this.httpClient.get('../../assets/launchlibrary.json')
-        .pipe(
-          map((res:any) => res.launches.map(launch => ({
-            id: launch.id,
-            name: launch.name,
-            agencie: launch.rocket.agencies ? launch.rocket.agencies.length > 0 ? launch.rocket.agencies[0].id : 0: 0,
-            status: launch.status,
-            typeMission: launch.missions.length > 0 ? launch.missions[0].type : 0,
-          }))
-          ),
-          tap(launches => localStorage.setItem('launches', JSON.stringify(launches)))
-        );
-    }
+    return this.httpClient.get('../../assets/launchlibrary.json')
+      .pipe(
+        map((res:any) => res.launches.map(launch => ({
+          id: launch.id,
+          name: launch.name,
+          agencie: launch.rocket.agencies ? launch.rocket.agencies.length > 0 ? launch.rocket.agencies[0].id : 0: 0,
+          status: launch.status,
+          typeMission: launch.missions.length > 0 ? launch.missions[0].type : 0,
+        }))
+        )
+      );
   }
 
   public getAgencies$ = () : Observable<any> => {

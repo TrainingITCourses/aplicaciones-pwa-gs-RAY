@@ -7,6 +7,8 @@ import { LoadTypeStatus } from '../reducers/type-status/type-status.actions';
 import { LoadAgencies } from '../reducers/agencie/agencie.actions';
 import { CriteriaState } from '../reducers/criteria/criteria.reducer';
 import { LaunchesState } from '../reducers/launch/launch.reducer';
+import { SwUpdate, UpdateAvailableEvent } from '@angular/service-worker';
+import { ChangeVersion } from '../reducers/version/version.actions';
 
 @Component({
   selector: 'app-search',
@@ -17,13 +19,13 @@ export class SearchComponent implements OnInit {
 
   constructor(private store: Store<State>,
               private criteriaStore: Store<CriteriaState>,
-              private launchesStore: Store<LaunchesState>) {}
+              private launchesStore: Store<LaunchesState>,
+              private swUpdate: SwUpdate) {}
 
   ngOnInit() {
     this.loadData();
-  
-    this.criteriaStore.select( 'criteria' )
-      .subscribe( state => this.onChangeValue(state) );
+    this.observeCriteria();
+    this.observeVersions();
   }
 
   private loadData = () => {
@@ -31,6 +33,24 @@ export class SearchComponent implements OnInit {
     this.store.dispatch(new LoadTypeMissions());
     this.store.dispatch(new LoadTypeStatus());
     this.store.dispatch(new LoadAgencies());
+  }
+
+  private observeCriteria = () => {
+    this.criteriaStore.select( 'criteria' )
+      .subscribe( state => this.onChangeValue(state) );
+  }
+
+  private observeVersions = () => {
+    const actualVersion: string = "1.0.5";
+    this.store.dispatch(new ChangeVersion(actualVersion));
+
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.available.subscribe((event: UpdateAvailableEvent) => {
+        if (window.confirm("La versión " + actualVersion + " está disponible. Pulse OK para instalarla.")) { 
+          window.location.reload()
+        }
+      });
+    }
   }
  
   onChangeValue = (state: any) => {

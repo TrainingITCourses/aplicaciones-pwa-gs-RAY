@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LaunchesState } from './../../reducers/launch/launch.reducer';
 import { Store } from '@ngrx/store';
+import { VersionState } from '../../reducers/version/version.reducer';
 
 @Component({
   selector: 'app-results-counter',
@@ -10,12 +11,15 @@ import { Store } from '@ngrx/store';
 })
 export class ResultsCounterComponent implements OnInit {
 
-  constructor(private storeLaunches: Store<LaunchesState>) { }
+  constructor(private storeLaunches: Store<LaunchesState>,
+              private storeVersion: Store<VersionState>) { }
 
-  private launches$;
+  public launches$;
+  public version$;
 
   ngOnInit() {
-    this.launches$ = this.storeLaunches.select('launch')
+    this.launches$ = this.storeLaunches.select('launch');
+    this.version$ = this.storeVersion.select('version');
   }
 
 }

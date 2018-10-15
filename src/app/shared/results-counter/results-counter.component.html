@@ -1,2 +1,5 @@
 <h2 app-counter>Número de lanzamientos filtrados: {{ (launches$ | async).launchesFiltered.length | number }}</h2>
 <h2 app-counter>Número de lanzamientos totales: {{ (launches$ | async).launches.length | number }}</h2>
+
+<h4 app-creator>&copy; RaY 2018</h4>
+<h4 app-version>Versión actual: {{ (version$ | async).version }}</h4>

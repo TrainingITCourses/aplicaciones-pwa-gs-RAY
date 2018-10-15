@@ -2,3 +2,19 @@
   text-align: center;
   padding-top: 12px;
 }
+
+[app-version] {
+  position: absolute;
+  top: calc(100% - 25px);
+  padding-top: 0px;
+  margin: 0px;
+  left: calc(100% - 150px);
+}
+
+[app-creator] {
+  position: absolute;
+  top: calc(100% - 25px);
+  padding-top: 0px;
+  margin: 0px;
+  left: 10px;
+}
