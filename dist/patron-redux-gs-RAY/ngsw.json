@@ -9,7 +9,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.64846893bf93392dc270.js",
+        "/main.a440e11e1c241395e829.js",
         "/polyfills.f6ae3e8b63939c618130.js",
         "/runtime.ec2944dd8b20ec099bf3.js",
         "/styles.45396dac632e9c2678ec.css"
@@ -40,7 +40,6 @@
       "name": "cache-first",
       "patterns": [
         "http:\\/\\/127\\.0\\.0\\.1:8080\\/assets\\/launchagencies\\.json",
-        "http:\\/\\/127\\.0\\.0\\.1:8080\\/assets\\/launchlibrary\\.json",
         "http:\\/\\/127\\.0\\.0\\.1:8080\\/assets\\/launchmissions\\.json",
         "http:\\/\\/127\\.0\\.0\\.1:8080\\/assets\\/launchstatus\\.json"
       ],
@@ -51,10 +50,12 @@
     },
     {
       "name": "api-first",
-      "patterns": [],
+      "patterns": [
+        "http:\\/\\/127\\.0\\.0\\.1:8080\\/assets\\/launchlibrary\\.json"
+      ],
       "strategy": "freshness",
-      "maxSize": 2000,
-      "maxAge": 86400000,
+      "maxSize": 1500,
+      "maxAge": 7200000,
       "timeoutMs": 4000,
       "version": 1
     }
@@ -69,8 +70,8 @@
     "/assets/icons/icon-72x72.png": "c7296dc9ffb35212adfc4b00ddaf19789dccae87",
     "/assets/icons/icon-96x96.png": "bbff83470b11648a347985cf3562772556e79770",
     "/favicon.ico": "bd0e531ae8b656c720bd7903775cf3c3f72d4fa5",
-    "/index.html": "773119637e50d6638bf9c91253f28d37ae49092a",
-    "/main.64846893bf93392dc270.js": "860132c9c32c546be3cfc37a276ca253c58ee6b5",
+    "/index.html": "fc707385018dd274715be76b75bc4ea24d61ad5c",
+    "/main.a440e11e1c241395e829.js": "fb007b348bb6d9b4fdcdc69bd3713c6502bb88cf",
     "/polyfills.f6ae3e8b63939c618130.js": "ef2035f0504b4f77eac510c33595c81a5d09e33f",
     "/runtime.ec2944dd8b20ec099bf3.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
     "/styles.45396dac632e9c2678ec.css": "1e85f3ed047c2062fa230cdf34034113f69fef00"

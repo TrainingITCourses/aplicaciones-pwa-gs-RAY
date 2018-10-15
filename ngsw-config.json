@@ -31,7 +31,6 @@
       "name": "cache-first",
       "urls": [
         "http://127.0.0.1:8080/assets/launchagencies.json",
-        "http://127.0.0.1:8080/assets/launchlibrary.json",
         "http://127.0.0.1:8080/assets/launchmissions.json",
         "http://127.0.0.1:8080/assets/launchstatus.json"
       ],
@@ -44,12 +43,12 @@
     {
       "name": "api-first",
       "urls":[
-
+        "http://127.0.0.1:8080/assets/launchlibrary.json"
       ],
       "cacheConfig":{
         "strategy" : "freshness",
-        "maxSize": 2000,
-        "maxAge" : "1d",
+        "maxSize": 500,
+        "maxAge" : "2h",
         "timeout" : "4s"
       }
     }

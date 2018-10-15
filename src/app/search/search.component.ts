@@ -41,12 +41,12 @@ export class SearchComponent implements OnInit {
   }
 
   private observeVersions = () => {
-    const actualVersion: string = "1.0.5";
+    const actualVersion: string = "1.1.0";
     this.store.dispatch(new ChangeVersion(actualVersion));
 
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe((event: UpdateAvailableEvent) => {
-        if (window.confirm("La versión " + actualVersion + " está disponible. Pulse OK para instalarla.")) { 
+        if (window.confirm("Una nueva versión está disponible. Pulse OK para instalarla.")) { 
           window.location.reload()
         }
       });
@@ -56,6 +56,12 @@ export class SearchComponent implements OnInit {
   onChangeValue = (state: any) => {
     console.log('Change criteria: ' + state.criteria + ' - value: ' + state.value);
     this.launchesStore.dispatch( new FilterLaunches( state ));
+  }
+
+  checkForUpdate = () => {
+    this.swUpdate.checkForUpdate()
+      .then(() => {console.log('No hay nueva actualización')})
+      .catch(err => {console.error(err)});
   }
 
 }
